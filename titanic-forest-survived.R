@@ -1,7 +1,7 @@
 rm(list=ls(all=TRUE))
 library(randomForest)
 library(RCurl)
-setwd('/Users/zurich/Google Drive/FactMachine-SITE/FM-Site-STRUCTURE/11-RandomForest/code/random-forest')
+#setwd('/Users/zurich/Google Drive/FactMachine-SITE/FM-Site-STRUCTURE/11-RandomForest/code/random-forest')
 #load('mTitanicAge.RData')
 
 x <- getURL("https://raw.githubusercontent.com/thefactmachine/random-forest/master/mTitanicAge.csv")
