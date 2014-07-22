@@ -1,12 +1,12 @@
 rm(list=ls(all=TRUE))
-setwd('/Users/zurich/Google Drive/FactMachine-SITE/FM-Site-STRUCTURE/11-RandomForest/code/random-forest')
-load("titanic.RData")
-
-write.csv(mTitanic, file = "mTitanic.csv", row.names = FALSE)
-mtk <- read.csv("mTitanic.csv")
-
-
+library(RCurl)
 library(randomForest)
+
+x <- getURL("https://raw.githubusercontent.com/thefactmachine/random-forest/master/mTitanic.csv")
+mTitanic <- read.csv(text = x)
+
+#mTitanic <- read.csv("mTitanic.csv")
+
 mTitanic$pclass <- 
     factor(mTitanic$pclass, levels = c("1st", "2nd", "3rd"), ordered = FALSE)
 #Partition into records with Age and Records without Age
@@ -33,9 +33,9 @@ forest.age.trainAll <- randomForest(age~. -survived, data = mTitanicAge,
 agePredictAll <- predict(forest.age.trainAll, newdata = mTitanicNoAge)
 mTitanicNoAge$age <- agePredictAll
 mTitanicAll <- rbind(mTitanicNoAge, mTitanicAge)
-save(mTitanicAll, file = "mTitanicAge.RData")
 
-write.csv(mTitanic, file = "mTitanicAge.csv", row.names = FALSE)
+#save(mTitanicAll, file = "mTitanicAge.RData")
+#write.csv(mTitanic, file = "mTitanicAge.csv", row.names = FALSE)
 
 
 
