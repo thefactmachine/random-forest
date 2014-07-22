@@ -24,5 +24,6 @@ survive.Predict <- predict(forest.surive, type = "class",
 tab <- table(survive.Predict, mTitanicAll[-trainSet, "survived"])
 tab
 #83.25 is the score to beat
+
 importance(forest.surive, type=1)
 (tab[1] + tab[4]) / sum(tab)
