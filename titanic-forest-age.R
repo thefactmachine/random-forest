@@ -1,7 +1,7 @@
 rm(list=ls(all=TRUE))
 library(RCurl)
 library(randomForest)
-
+setwd('/Users/zurich/Google Drive/FactMachine-SITE/FM-Site-STRUCTURE/11-RandomForest/code/random-forest')
 x <- getURL("https://raw.githubusercontent.com/thefactmachine/random-forest/master/mTitanic.csv")
 mTitanic <- read.csv(text = x)
 
@@ -35,9 +35,6 @@ mTitanicNoAge$age <- agePredictAll
 mTitanicAll <- rbind(mTitanicNoAge, mTitanicAge)
 
 #save(mTitanicAll, file = "mTitanicAge.RData")
-#write.csv(mTitanic, file = "mTitanicAge.csv", row.names = FALSE)
 
-
-
-
+write.csv(mTitanicAll, file = "mTitanicAge.csv", row.names = FALSE)
 
